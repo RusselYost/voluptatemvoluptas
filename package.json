@@ -1,0 +1,57 @@
+{
+  "name": "voluptatemvoluptas",
+  "version": "1.0.0",
+  "description": "Type safe replacement for node's EventEmitter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RusselYost/voluptatemvoluptas.git"
+  },
+  "main": "./dist/lib/index.js",
+  "types": "./dist/lib/index.d.ts",
+  "scripts": {
+    "test:node": "node ./dist/test",
+    "test:deno": "deno run ./deno_dist/test/mod.ts",
+    "test": "npm run test:node && npm run test:deno",
+    "tsc": "npx tsc",
+    "denoify": "npx denoify",
+    "cdn:.js": "simplifyify dist/lib/index.js -s evt -o dist/umd_bundle.js --debug --bundle",
+    "cdn:.min.js": "terser dist/umd_bundle.js -cmo dist/umd_bundle.min.js",
+    "cdn": "npm run cdn:.js && npm run cdn:.min.js",
+    "build": "npm run tsc && npm run denoify && npm run cdn",
+    "enable_short_import_path:npm": "npm run build && npx denoify_enable_short_npm_import_path",
+    "enable_short_import_path:deno": "npm run build && npx denoify_enable_short_deno_import_path",
+    "clean": "rm -rf dist deno_dist node_modules mod.ts"
+  },
+  "author": "DarrinOrtiz",
+  "license": "MIT",
+  "dependencies": {
+    "minimal-polyfills": "^2.1.0",
+    "run-exclusive": "^2.2.4"
+  },
+  "files": [
+    "/src/lib/",
+    "/src/tools/",
+    "/dist/lib/",
+    "/dist/tools/"
+  ],
+  "keywords": [
+    "deno",
+    "expedita",
+    "typescript",
+    "functional programming",
+    "qt signal",
+    "aut",
+    "ts-evt",
+    "async-await",
+    "promise",
+    "velit"
+  ],
+  "devDependencies": {
+    "denoify": "^0.2.13",
+    "simplifyify": "8.0.1",
+    "terser": "4.6.13",
+    "@types/node": "^10.0.0",
+    "rxjs": "^6.5.4",
+    "typescript": "3.9.2"
+  }
+}
